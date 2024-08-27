@@ -1,0 +1,31 @@
+<div class="container p-3">
+    <div class="row me-auto">
+        <div class="col-3">
+            <button class="btn btn-success" routerLink="/add-restaurant">+ Add</button>
+        </div>
+    </div>
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Location</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let restaurant of restaurantList; let i = index;">
+            <th scope="row">{{ i+1 }}</th>
+            <td>{{ restaurant.name }}</td>
+            <td>{{ restaurant.description }}</td>
+            <td>{{ restaurant.location }}</td>
+            <td>
+                <button type="button" class="btn btn-info me-3" [routerLink]="['/edit-restaurant', restaurant.id]">Edit</button>
+                <button type="button" class="btn btn-danger" (click)="deleteRestaurant(restaurant.id)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+</div>

@@ -1,0 +1,36 @@
+<div class="container p-3">
+    <h3>{{isEditMode?'Edit Restaurant': 'Add Restaurant'}}</h3>
+    <form [formGroup]="restaurantForm" (ngSubmit)="save()">
+        <div class="row mb-3">
+            <label for="name" class="col-sm-4 col-form-label">Name*</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" name="name" id="name" formControlName="name">
+            </div>
+            <div *ngIf="restaurantForm.controls['name'].touched && restaurantForm.controls['name'].dirty && restaurantForm.controls['name'].errors && restaurantForm.controls['name'].errors['required']">
+                <small class="text-danger">Name is required</small>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="description" class="col-sm-4 col-form-label">Description*</label>
+            <div class="col-sm-8">
+                <textarea class="form-control" id="description" placeholder="Add description" formControlName="description"></textarea>
+            </div>
+            <div *ngIf="restaurantForm.controls['description'].touched && restaurantForm.controls['description'].dirty && restaurantForm.controls['description'].errors && restaurantForm.controls['description'].errors['required']">
+                <small class="text-danger">Description is required</small>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="location"  class="col-sm-4 col-form-label">Location*</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" name="location" id="location" formControlName="location">
+            </div>
+            <div *ngIf="restaurantForm.controls['location'].touched && restaurantForm.controls['location'].dirty && restaurantForm.controls['location'].errors && restaurantForm.controls['location'].errors['required']">
+                <small class="text-danger">Location is required</small>
+            </div>
+        </div>
+        <div class="mb-3">
+            <button type="button" class="btn btn-danger me-2" (click)="goToList()">Cancel</button>
+            <button type="submit" class="btn btn-primary" [disabled]="restaurantForm.invalid">{{isEditMode?'Update': 'Save'}}</button>
+        </div>
+    </form>
+</div>
