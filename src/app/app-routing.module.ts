@@ -7,7 +7,9 @@ const routes: Routes = [
   { path: 'restaurants', component: RestaurantsComponent },
   { path: 'add-restaurant', component: AddEditRestaurantComponent },
   { path: 'edit-restaurant/:id', component: AddEditRestaurantComponent },
-  { path: '', redirectTo: 'restaurants', pathMatch: 'full' }
+  // { path: '', redirectTo: 'restaurants', pathMatch: 'full' }
+  { path: '', component: RestaurantsComponent, pathMatch: 'full' }
+
 ];
 
 @NgModule({
